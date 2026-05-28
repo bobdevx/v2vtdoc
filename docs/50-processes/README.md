@@ -19,7 +19,7 @@ Each subsystem process is a sequence of events that mutate the entities describe
 
 **Outcome.**
 - A new `Draft` Equipment is created, or an existing draft is finalised.
-- A purchase invoice is posted, with at least one line on the relevant `BILLAG-xx` inventory product.
+- A purchase invoice is posted, with at least one line on the relevant `BIL-LAGx` inventory product.
 - A Lot row is created with serial = equipment code, quantity = 1.
 - The Equipment Inventory aggregate is incremented.
 - Equipment status moves to `Stock`.
@@ -62,7 +62,7 @@ Each subsystem process is a sequence of events that mutate the entities describe
 
 **Outcome.**
 - A sales invoice is posted with two product lines:
-  - The matching `BILLAG-xx` inventory product (relieves stock, carries the acquisition-side classification).
+  - The matching `BIL-LAGx` inventory product (relieves stock, carries the acquisition-side classification).
   - A `BIL-xx` sales product (carries the sale-side tax classification — private / business / export / margin).
 - Lot quantity goes to 0; the serial Lot row remains as historical record.
 - Inventory aggregate decremented in both quantity and value.

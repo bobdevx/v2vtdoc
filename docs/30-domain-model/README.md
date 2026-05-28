@@ -16,6 +16,6 @@ A single trade typically produces:
 
 1. **One Equipment row** — created in `Draft` while evaluating the purchase, promoted to `Stock` on purchase, and finally `Sold` on sale.
 2. **One Lot row** — created when the purchase document is posted; serial number = Equipment code; quantity 1 while in stock, 0 once sold.
-3. **One Inventory row update** — the relevant `BILLAG-xx` product's inventory and value move up on purchase, down on sale, and may be revalued mid-life (capitalised repairs, write-downs).
+3. **One Inventory row update** — the relevant `BIL-LAGx` product's inventory and value move up on purchase, down on sale, and may be revalued mid-life (capitalised repairs, write-downs).
 4. **Zero or more Job Cards** — for any repair, preparation, or warranty work, with the workshop as customer while the vehicle is in stock.
 5. **A purchase document and a sales document** — see [Processes](../50-processes/README.md).

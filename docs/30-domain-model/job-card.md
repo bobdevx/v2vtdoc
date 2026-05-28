@@ -18,7 +18,9 @@ Records work performed on an Equipment. The same Job Card entity is used across 
 
 Note the asymmetry: warranty obligations stay with the workshop even after the vehicle has been sold, so the Job Card's customer remains the workshop. Ordinary post-sale service moves to the buyer-as-customer flow on a fresh Customer Equipment row.
 
-The vehicle VIN is used to track work across the same vehicle from customer or workshop ownership.
+## Tracking work across ownership changes
+
+A single physical vehicle can sit on more than one Equipment row over its lifetime — a Trade Equipment row while the workshop owns it, then a Customer Equipment row once it has been sold (and potentially further Customer Equipment rows if it later returns to the workshop under a different owner). The durable identifier that ties these together is the **VIN**: the full work history of a vehicle — stock-period reconditioning, post-sale warranty, and ordinary customer service — is assembled by joining Job Cards on VIN, regardless of which Equipment row each card was recorded under.
 
 ## Effect on equipment value
 

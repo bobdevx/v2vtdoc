@@ -65,7 +65,7 @@ Placeholder for purchase scenarios that do not fit the four above (e.g. demonstr
 
 ## Open questions / to expand
 
-- The full list of `BILLAG-xx` and `BIL-xx` SKUs and their mappings to the table above.
+- The mapping from each `BIL-LAGx` and `BIL-xx` SKU (see [Product](../30-domain-model/product.md)) to the purchase type above.
 - A worked example per purchase type showing purchase document → stock value → sales document → ledger postings.
 - Margin scheme: handling of period-based margin calculation vs item-by-item (Danish rules allow both under conditions).
 - Treatment of *registreringsafgift* — in carrying value vs as a pass-through.

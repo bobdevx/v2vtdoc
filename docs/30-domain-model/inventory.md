@@ -14,9 +14,13 @@ The Inventory row holds the **aggregate** stock position for an Equipment Invent
 
 ## Inventory transactions
 
-Inventory transactions record movements at the aggregate level. Every Lot transaction has a corresponding Inventory transaction that rolls the change up to the product level.
+Inventory transactions record movements at the aggregate level. Every Lot transaction has a corresponding Inventory transaction that rolls the change up to the product level. The Inventory row's value at any point in time equals the sum of the carrying values of its currently-in-stock Lots.
 
-The value of the aggregated inventory is the sum of the carrying values of the individual lots. When a vehicle is purchased, a new lot is created with the acquisition cost as its value, and the inventory quantity and value are increased accordingly. When a vehicle is sold, its lot quantity goes to 0 and its value is removed from inventory.
+| Event        | Lot                                                       | Inventory row                                                            |
+| ------------ | --------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Purchase     | New Lot created with quantity 1 and value = acquisition cost | Quantity +1; value += acquisition cost                                |
+| Sale         | Lot quantity → 0; value removed                           | Quantity −1; value −= the lot's then-current carrying value              |
+| Revaluation  | Zero-quantity Lot transaction with a positive or negative value | Quantity unchanged; value moves by the same delta                  |
 
 ## Open questions / to expand
 
