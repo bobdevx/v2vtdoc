@@ -16,6 +16,7 @@ The X2 Automotive Workshop System does **not** maintain ledgers. Vehicle Trade e
 | VAT on sales                | Sales invoice                                               | Output VAT (full or margin-scheme)                |
 | Repair costs                | Job Card (repair) closure                                   | Reclassification of cost into inventory           |
 | Warranty costs              | Job Card (warranty) closure                                 | Warranty expense                                  |
+| Registreringsafgift outlay  | Job Card (*Udlæg for registreringsafgift*) closure on import; outlay line on the sales invoice on resale | Dedicated pass-through account (per-tenant configurable, e.g. *Registreringsafgiftkonto*). Not VAT, not deductible. Paired purchase / sale entries net to zero. |
 
 The exact ledger entries depend on the [Equipment Purchase Type](../40-purchase-types/README.md), since the Danish VAT treatment differs by type.
 
@@ -38,6 +39,6 @@ A worked matrix of "for each event × each purchase type, the debit / credit acc
 ## Open questions / to expand
 
 - The target external accounting systems and the per-system account mappings.
-- Treatment of *registreringsafgift* in the chart of accounts — separate pass-through account vs absorbed into inventory cost.
+- Default account number for the *registreringsafgift* pass-through (now a dedicated, per-tenant configurable account — see [Purchase types](../40-purchase-types/README.md) and [Job Card](../30-domain-model/job-card.md)).
 - Reconciliation reports between X2 inventory and the external ledger.
 - Handling of foreign-currency purchases (EU import / non-EU import) — FX rate, FX gain/loss recognition.

@@ -51,3 +51,18 @@ docs/
 When a section's single `README.md` grows large enough that distinct concepts are competing for space, split each concept into its own file in the same folder (the pattern used in `30-domain-model/`) and reduce the `README.md` to an index.
 
 The pandoc publishing pipeline reads from this `docs/` tree; its generated output lands under `docs/published/output/` (gitignored).
+
+## Expert input workflow
+
+A peer directory `expert-input/` at the repo root captures external expert input (PDF, TXT, email export, any language) and the work of folding it into `docs/`. Each piece of expert input gets a numeric ID and flows through three folders:
+
+```
+expert-input/
+  sources/<id>.<ext>   # raw expert input as received — immutable
+  notes/<id>.md        # translated, structured, clarified version
+  analysis/<id>.md     # cross-reference against docs/ with recommended actions
+```
+
+When the user drops a new file into `sources/`, the expected work is to: (1) read the source, (2) write `notes/<id>.md`, (3) write `analysis/<id>.md`. Templates and detail are in `expert-input/README.md` and the per-subfolder READMEs.
+
+**Nothing from expert input lands in `docs/` directly** — the analysis file's "Open issues to fold into the spec" section is the bridge, and the user retains the decision on what makes it across.

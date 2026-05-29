@@ -47,7 +47,7 @@ Five purchase types are recognised:
 
 **Caution.** Vehicles that meet the EU definition of a *new means of transport* (under 6 months old or under 6,000 km at acquisition) fall under a special regime — VAT is always due in the country of destination regardless of the seller's status. This case is flagged here and to be documented in detail later.
 
-**Registreringsafgift.** Due on first Danish registration if the vehicle has not previously been registered in Denmark.
+**Registreringsafgift.** Due on first Danish registration if the vehicle has not previously been registered in Denmark. Treated as a **pass-through cost** — tracked separately on a dedicated JobCard (see [Job Card](../30-domain-model/job-card.md)), **not** absorbed into the equipment's carrying value, and re-billed to the buyer on a dedicated outlay line of the sales invoice (see [Product](../30-domain-model/product.md)).
 
 ## 4. Non-EU Import — VAT exclusive
 
@@ -57,7 +57,7 @@ Five purchase types are recognised:
 
 **Sale side.** Standard Danish sale; full output VAT.
 
-**Registreringsafgift.** Due on first Danish registration. For imported used vehicles this is typically a substantial component of the in-stock carrying value and must be captured separately so it can be passed on; it is not VAT and is not deductible.
+**Registreringsafgift.** Due on first Danish registration. For imported used vehicles this is typically a substantial amount. It is **not** absorbed into the equipment's carrying value — instead it is tracked as a **pass-through cost** on a dedicated JobCard (see [Job Card](../30-domain-model/job-card.md)) and re-billed to the buyer on a dedicated outlay line of the sales invoice (see [Product](../30-domain-model/product.md)). Not VAT, not deductible.
 
 ## 5. Other
 
@@ -68,4 +68,3 @@ Placeholder for purchase scenarios that do not fit the four above (e.g. demonstr
 - The mapping from each `BIL-LAGx` and `BIL-xx` SKU (see [Product](../30-domain-model/product.md)) to the purchase type above.
 - A worked example per purchase type showing purchase document → stock value → sales document → ledger postings.
 - Margin scheme: handling of period-based margin calculation vs item-by-item (Danish rules allow both under conditions).
-- Treatment of *registreringsafgift* — in carrying value vs as a pass-through.

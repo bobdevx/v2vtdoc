@@ -42,6 +42,20 @@ Two product families are used by Vehicle Trade:
 
 > **Why two products per sale?** Danish VAT treatment depends jointly on how the vehicle was acquired *and* to whom it is being sold. Splitting responsibilities — inventory product carries the cost / purchase classification, sales product carries the sale classification — keeps the data model orthogonal and lets the same stock vehicle be sold under whichever scheme is correct for the buyer.
 
+## 3. Ancillary vehicle-trade products
+
+Not every cost or income on a vehicle rides on the equipment inventory and sales products described above. Danish-tax-specific items are handled via dedicated ancillary SKUs that appear on the sales invoice (and / or are tracked internally on JobCards). These SKUs are not inventory tracked.
+
+| SKU       | Description                       | VAT rate | VAT description |
+| --------- | --------------------------------- | -------- | --------------- |
+| REGAFGIFT | Udlæg for registreringsafgift     | 0%       | Ej moms         |
+
+The *Udlæg for registreringsafgift* SKU partners with the [*Udlæg for registreringsafgift* JobType](job-card.md): the JobType records the workshop's outlay on import (negative) and the corresponding charge to the buyer on resale (positive); the SKU is the sales-invoice line that re-bills the buyer for the registration tax. Sold **without** VAT — it is a pure pass-through, not a service.
+
+Further ancillary SKUs (*Toldsyn*, *Udlæg for nummerplader*, etc.) are under definition.
+
+> *SKU code `REGAFGIFT` is a placeholder; to be confirmed.*
+
 ## Open questions / to expand
 
 - **Confirm** the VAT rates and descriptions filled into the `BIL-LAGx` and `BIL-xx` tables above — they are best-guess values based on the Danish VAT regime; in particular: BIL-LAG3 / BIL-3 (margin scheme) treat the line as `0%` because VAT is calculated on the margin rather than the gross, and BIL-LAG4 (EU acquisition) shows `25%` even though the reverse-charge mechanism nets it to zero in cash terms.

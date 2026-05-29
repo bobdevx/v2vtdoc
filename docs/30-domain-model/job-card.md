@@ -22,6 +22,18 @@ Note the asymmetry: warranty obligations stay with the workshop even after the v
 
 A single physical vehicle can sit on more than one Equipment row over its lifetime — a Trade Equipment row while the workshop owns it, then a Customer Equipment row once it has been sold (and potentially further Customer Equipment rows if it later returns to the workshop under a different owner). The durable identifier that ties these together is the **VIN**: the full work history of a vehicle — stock-period reconditioning, post-sale warranty, and ordinary customer service — is assembled by joining Job Cards on VIN, regardless of which Equipment row each card was recorded under.
 
+## JobType categories
+
+Every Job Card carries a **JobType** that determines how its cost or income is treated downstream — capitalised into the equipment's value, expensed, or passed through. The categories used by Vehicle Trade today:
+
+| JobType                          | Direction(s)                              | Effect on equipment value         | Effect on accounting                                                                                                                  |
+| -------------------------------- | ----------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Repair                           | Cost                                      | Capitalised into carrying value   | Reclassified from expense into inventory.                                                                                             |
+| Warranty                         | Cost                                      | Not capitalised                   | Warranty expense; reduces realised profit on the original sale.                                                                       |
+| Udlæg for registreringsafgift    | Cost (on purchase) **or** income (on sale) | **Not** capitalised — pass-through | Posts to a dedicated, per-tenant configurable pass-through account (*Registreringsafgiftkonto*). Paired purchase + sale net to zero. |
+
+Further JobType categories (e.g. *Toldsyn*, *Udlæg for nummerplader*, *Eksportgodtgørelse*) are under definition and will be added here when the corresponding Vehicle Trade processes are documented.
+
 ## Effect on equipment value
 
 Repair Job Cards on a `Stock` equipment can **increase** its carrying value (capitalised reconditioning) via a zero-quantity Lot revaluation transaction. Warranty Job Cards generally **do not** capitalise — they're a cost of sale that reduces realised profit. See [Repair costs](../60-accounting/README.md) and [Warranty costs](../60-accounting/README.md).
